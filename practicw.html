@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jonah practice work</title>
+        <style>
+            .sub-btn{
+                border: none;
+                background-color: black;
+                color: white;
+                padding-top:10px;
+                padding-bottom:10px;
+                padding-left: 16px;
+                padding-right: 16px;
+                font-weight: bold;
+                border-radius: 50px;
+                cursor: pointer;
+                margin-bottom: 30pxs;
+            }
+
+            .is-sub{
+                background-color: gray;
+                color: black;
+            }
+            body{
+                font-family: arial;
+            }
+            .cost-input{
+                font-size: 15px;
+                padding: 10px ;
+            }
+            .calc{
+                background-color: green;
+                color: white;
+                border: none;
+                font-size: 15px;
+                padding: 12px 15px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Youtube Subcribe Button</p>
+        <button  onclick="sub()" class="js-bt-subscribed sub-btn">Subscribe</button>
+        <p>Amazon shipping caculator</p>
+        <input placeholder="Cost Of Order" class="js-cost-input cost-input" onkeydown="keyDown(event)">
+        <button onclick="calc()" class="calc"> Calculate</button>
+        <p class="js-cost-inputt"></p>
+
+     <script>
+
+     
+        function sub(){ 
+            const btnElemetss = document.querySelector('.js-bt-subscribed');
+            if (btnElemetss.innerText === 'Subscribe') {
+                btnElemetss.innerHTML = 'Subscribed';
+                btnElemetss.classList.add('is-sub');
+            } else {
+                btnElemetss.innerHTML = 'Subcribe'
+                btnElemetss.classList.remove('is-sub')
+            } 
+        }
+
+
+        function calc(){
+            const inputelem = document.querySelector('.js-cost-input');
+                let cost = Number(inputelem.value)
+                let resultt =  ""
+                if(cost < 40){
+                    if (cost != '' || cost != 0 ) {
+                        cost = cost + 10    
+                        document.querySelector('.js-cost-inputt').innerHTML = `$${cost}`;
+                    }
+                }else if (cost => 40 && (cost != '' && cost != 0)){
+                  resultt = "you have got free shipping"
+                  document.querySelector('.js-cost-inputt').innerHTML = `$${cost}, ${resultt}`;
+                }       
+        }
+
+        function keyDown(event){
+            if (event.key === 'Enter') {
+                calc()
+            }   
+        }
+
+       
+     </script>
+    </body>
+</html>
